@@ -1,7 +1,7 @@
 from math import sin,cos,radians
 import random
 
-# TODO: Deal with all TODOs in this file and also remove the TODO and HINT comments.
+#TODO: Deal with all TODOs in this file and also remove the TODO and HINT comments.
 
 """ This is the model of the game"""
 class Game:
@@ -9,64 +9,82 @@ class Game:
     def __init__(self, cannonSize, ballSize):
         # TODO: "pass" means the constructor does nothing. Clearly it should be doing something.
         # HINT: This constructor needs to create two players according to the rules specified in the assignment text
+        p1 = Player('blue', -90, False)
+        p2 = Player('red', 90, True)
+        self.players =  [p1,p2]
+        self.currentplayer = 0
         self.cS = cannonSize
         self.bS = ballSize
+        self.windspeed = 0
+
     """ A list containing both players """
     def getPlayers(self):
-        return [
-            Player(self, False, -90, "blue"),
-            Player(self, True, 90, "red"),
-        ]  # TODO: this is just a dummy value
+        return self.players #TODO: 
 
     """ The height/width of the cannon """
     def getCannonSize(self):
-        return 0 #TODO: this is just a dummy value
+        return self.cS #TODO: 
 
     """ The radius of cannon balls """
     def getBallSize(self):
-        return 0 #TODO: this is just a dummy value
+        return self.bS #TODO: 
 
     """ The current player, i.e. the player whose turn it is """
     def getCurrentPlayer(self):
-        return None #TODO: this is just a dummy value
+        return self.players[self.currentplayer] #TODO: 
 
     """ The opponent of the current player """
     def getOtherPlayer(self):
-        return None #TODO: this is just a dummy value
+        if self.getCurrentPlayer == self.players[0]: #TODO: 
+            return self.players[1]
+        if self.getCurrentPlayer == self.players[1]:
+            return self.players[0]
 
     """ The number (0 or 1) of the current player. This should be the position of the current player in getPlayers(). """
     def getCurrentPlayerNumber(self):
-        return 0 #TODO: this is just a dummy value
-
+        return self.players.index #TODO: 
+    
     """ Switch active player """
     def nextPlayer(self):
-        pass #TODO: this should do something instead of nothing
+        if self.getCurrentPlayer == self.players[0]:    #TODO: this should do something instead of nothing
+            return self.players[1]
+        if self.getCurrentPlayer == self.players[1]:
+            return self.players[0] 
 
     """ Set the current wind speed, only used for testing """
     def setCurrentWind(self, wind):
-        pass #TODO: this should do something instead of nothing
+        self.windspeed = wind #TODO: this should do something instead of nothing
+        return self.windspeed
 
+    
     def getCurrentWind(self):
-        return 0 #TODO: this is just a dummy value
+        return self.windspeed #TODO: this is just a dummy value
 
     """ Start a new round with a random wind value (-10 to +10) """
     def newRound(self):
-        # HINT: random.random() gives a random value between 0 and 1
+        #HINT: random.random() gives a random value between 0 and 1
         # multiplying this by 20 gives a random value between 0 and 20
         # how do you shift a value between 0 and 20 to one between -10 and +10?
-        pass #TODO: this should do something instead of nothing
+        self.__init__(self.bS, self.cS)
+        self.setCurrentWind((random.random()*20)-10) #TODO: this should do something instead of nothing
+        return ???
 
 """ Models a player """
 class Player:
    #TODO: You need to create a constructor here. 
    #HINT: It should probably take the Game that creates it as parameter and some additional properties that differ between players (like firing-direction, position and color)
-    def __init__(self, x, angle, color)
-        
+    def __init__(self, col, xpos, isR):
+        self.color = col
+        self.position = xpos
+        self.isReversed = isR
+        self.points = 0
+
     """ Create and return a projectile starting at the centre of this players cannon. Replaces any previous projectile for this player. """
     def fire(self, angle, velocity):
         # The projectile should start in the middle of the cannon of the firing player
         # HINT: Your job here is to call the constructor of Projectile with all the right values
         # Some are hard-coded, like the boundaries for x-position, others can be found in Game or Player
+        
         return None #TODO: this is just a dummy value
 
     """ Gives the x-distance from this players cannon to a projectile. If the cannon and the projectile touch (assuming the projectile is on the ground and factoring in both cannon and projectile size) this method should return 0"""
@@ -80,23 +98,24 @@ class Player:
 
     """ The current score of this player """
     def getScore(self):
-        return 0 #TODO: this is just a dummy value
+        return self.points #TODO: this is just a dummy value
 
     """ Increase the score of this player by 1."""
     def increaseScore(self):
-        pass #TODO: this should do something instead of nothing
+        self.points += 1 #TODO: this should do something instead of nothing
 
     """ Returns the color of this player (a string)"""
     def getColor(self):
-        return "DUMMY COLOR" #TODO: this is just a dummy value
+        return self.color #TODO: this is just a dummy value
 
     """ The x-position of the centre of this players cannon """
     def getX(self):
-        return 0 #TODO: this is just a dummy value
+        return self.position[0] #TODO: this is just a dummy value
 
     """ The angle and velocity of the last projectile this player fired, initially (45, 40) """
     def getAim(self):
         return 0, 0 #TODO: this is just a dummy value 
+
 
 
 """ Models a projectile (a cannonball, but could be used more generally) """
