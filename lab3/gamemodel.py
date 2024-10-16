@@ -9,8 +9,8 @@ class Game:
     def __init__(self, cannonSize, ballSize):
         # TODO: "pass" means the constructor does nothing. Clearly it should be doing something.
         # HINT: This constructor needs to create two players according to the rules specified in the assignment text
-        p1 = Player('blue', -90, False)
-        p2 = Player('red', 90, True)
+        p1 = Player(self, 'blue', -90, False)
+        p2 = Player(self, 'red', 90, True)
         self.players =  [p1,p2]
         self.currentplayer = 0
         self.cS = cannonSize
@@ -66,14 +66,15 @@ class Game:
         # multiplying this by 20 gives a random value between 0 and 20
         # how do you shift a value between 0 and 20 to one between -10 and +10?
         self.__init__(self.bS, self.cS)
-        self.setCurrentWind((random.random()*20)-10) #TODO: this should do something instead of nothing
+        self.setCurrentWind((random.random()*20)-10)
         return 
 
 """ Models a player """
 class Player:
    #TODO: You need to create a constructor here. 
    #HINT: It should probably take the Game that creates it as parameter and some additional properties that differ between players (like firing-direction, position and color)
-    def __init__(self, col, xpos, isR):
+    def __init__(self, game, col, xpos, isR):
+        self._game = game
         self.color = col
         self.position = xpos
         self.isReversed = isR
