@@ -19,46 +19,46 @@ class Game:
 
     """ A list containing both players """
     def getPlayers(self):
-        return self.players #TODO: 
+        return self.players 
 
     """ The height/width of the cannon """
     def getCannonSize(self):
-        return self.cS #TODO: 
+        return self.cS  
 
     """ The radius of cannon balls """
     def getBallSize(self):
-        return self.bS #TODO: 
+        return self.bS  
 
     """ The current player, i.e. the player whose turn it is """
     def getCurrentPlayer(self):
-        return self.players[self.currentplayer] #TODO: 
+        return self.players[self.currentplayer]  
 
     """ The opponent of the current player """
     def getOtherPlayer(self):
-        if self.getCurrentPlayer == self.players[0]: #TODO: 
+        if self.getCurrentPlayer == self.players[0]:  
             return self.players[1]
         if self.getCurrentPlayer == self.players[1]:
             return self.players[0]
 
     """ The number (0 or 1) of the current player. This should be the position of the current player in getPlayers(). """
     def getCurrentPlayerNumber(self):
-        return self.players.index #TODO: 
+        return self.players.index  
     
     """ Switch active player """
     def nextPlayer(self):
-        if self.getCurrentPlayer == self.players[0]:    #TODO: this should do something instead of nothing
+        if self.getCurrentPlayer == self.players[0]:
             return self.players[1]
         if self.getCurrentPlayer == self.players[1]:
             return self.players[0] 
 
     """ Set the current wind speed, only used for testing """
     def setCurrentWind(self, wind):
-        self.windspeed = wind #TODO: this should do something instead of nothing
+        self.windspeed = wind 
         return self.windspeed
 
     
     def getCurrentWind(self):
-        return self.windspeed #TODO: this is just a dummy value
+        return self.windspeed 
 
     """ Start a new round with a random wind value (-10 to +10) """
     def newRound(self):
@@ -67,7 +67,7 @@ class Game:
         # how do you shift a value between 0 and 20 to one between -10 and +10?
         self.__init__(self.bS, self.cS)
         self.setCurrentWind((random.random()*20)-10) #TODO: this should do something instead of nothing
-        return ???
+        return 
 
 """ Models a player """
 class Player:
@@ -98,19 +98,19 @@ class Player:
 
     """ The current score of this player """
     def getScore(self):
-        return self.points #TODO: this is just a dummy value
+        return self.points 
 
     """ Increase the score of this player by 1."""
     def increaseScore(self):
-        self.points += 1 #TODO: this should do something instead of nothing
+        self.points += 1 
 
     """ Returns the color of this player (a string)"""
     def getColor(self):
-        return self.color #TODO: this is just a dummy value
+        return self.color 
 
     """ The x-position of the centre of this players cannon """
     def getX(self):
-        return self.position[0] #TODO: this is just a dummy value
+        return self.position
 
     """ The angle and velocity of the last projectile this player fired, initially (45, 40) """
     def getAim(self):
