@@ -1,14 +1,11 @@
 from math import sin,cos,radians
 import random
 
-#TODO: Deal with all TODOs in this file and also remove the TODO and HINT comments.
 
 """ This is the model of the game"""
 class Game:
     """ Create a game with a given size of cannon (length of sides) and projectiles (radius) """
     def __init__(self, cannonSize, ballSize):
-        # TODO: "pass" means the constructor does nothing. Clearly it should be doing something.
-        # HINT: This constructor needs to create two players according to the rules specified in the assignment text
         p1 = Player(self, 'blue', -90, False)
         p2 = Player(self, 'red', 90, True)
         self.players =  [p1,p2]
@@ -64,8 +61,6 @@ class Game:
 
 """ Models a player """
 class Player:
-   #TODO: You need to create a constructor here. 
-   #HINT: It should probably take the Game that creates it as parameter and some additional properties that differ between players (like firing-direction, position and color)
     def __init__(self, game, col, xpos, isR):
         self.game = game
         self.color = col
@@ -77,7 +72,7 @@ class Player:
     """ Create and return a projectile starting at the centre of this players cannon. Replaces any previous projectile for this player. """
     def fire(self, angle, velocity):
         if self.isReversed == True:
-            self.anglevelocity = ((180 - angle), velocity)
+            self.anglevelocity = ((angle), velocity)
             return Projectile((180 - angle), velocity, self.game.getCurrentWind(), self.getX(), (self.game.getCannonSize()/2), -110, 110)
         else:
             self.anglevelocity = (angle, velocity)

@@ -6,11 +6,9 @@ class GameGraphics:
     def __init__(self, game):
         self.game = game
 
-        # open the window
         self.win = GraphWin("Cannon game" , 640, 480, autoflush=False)
         self.win.setCoords(-110, -10, 110, 155)
         
-        # draw the terrain
         ground = Line(Point(-110, 0), Point(110, 0))
         ground.draw(self.win)
 
@@ -49,7 +47,6 @@ class GameGraphics:
         while proj.isMoving():
             proj.update(1/50)
 
-            # move is a function in graphics. It moves an object dx units in x direction and dy units in y direction
             circle.move(proj.getX() - circle_X, proj.getY() - circle_Y)
 
             circle_X = proj.getX()
@@ -70,9 +67,7 @@ class GameGraphics:
             oldAngle,oldVel = player.getAim()
             wind = self.game.getCurrentWind()
 
-            # InputDialog(self, angle, vel, wind) is a class in gamegraphics
             inp = InputDialog(oldAngle,oldVel,wind)
-            # interact(self) is a function inside InputDialog. It runs a loop until the user presses either the quit or fire button
             if inp.interact() == "Fire!": 
                 angle, vel = inp.getValues()
                 inp.close()
