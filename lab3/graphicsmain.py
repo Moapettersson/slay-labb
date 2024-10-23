@@ -35,12 +35,12 @@ class GameGraphics:
         circle_X = proj.getX()
         circle_Y = proj.getY()
 
-        currentplayerProjectile = self.draw_projs[player.game.getCurrentPlayerNumber()]
-        if currentplayerProjectile != None:
-            currentplayerProjectile.undraw()
+        # currentplayerProjectile = self.draw_projs[player.game.getCurrentPlayerNumber()]
+        # if currentplayerProjectile != None:     #ska ta bort föregående rundans projektil men funkar ej
+        #     currentplayerProjectile.undraw()
 
         circle = Circle(Point(circle_X, circle_Y), self.game.getBallSize())
-        currentplayerProjectile = circle
+        # currentplayerProjectile = circle
         circle.setFill(player.getColor())
         circle.draw(self.win)
 
